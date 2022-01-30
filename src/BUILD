@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("@rules_java//java:defs.bzl", "java_library")
+load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 
 # Convention:
@@ -27,6 +28,14 @@ java_lite_proto_library(
 # should be called foo_cc_proto.
 cc_proto_library(
     name = "person_cc_proto",
+    deps = [":person_proto"],
+)
+
+# Convention:
+# A py_proto_library that wraps a proto_library named foo_proto
+# should be called foo_py_proto.
+py_proto_library(
+    name = "person_py_proto",
     deps = [":person_proto"],
 )
 
