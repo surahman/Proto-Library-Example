@@ -36,7 +36,9 @@ cc_proto_library(
 # should be called foo_py_proto.
 py_proto_library(
     name = "person_py_proto",
-    deps = [":person_proto"],
+    srcs = [":person_proto"],
+    srcs_version = "PY2AND3",
+    deps = ["@com_google_protobuf//:protobuf_python"],
 )
 
 # Conventions:
